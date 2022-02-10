@@ -85,7 +85,7 @@ public class DominoServerTest {
 	
 	private List<DominoItem> getDominoItemListCase2() {
 		List<DominoItem> dominoItemList = new ArrayList<DominoItem>();
-		int maxItemNumber = 5;
+		int maxItemNumber = 6;
 		
 		for (int i=1; i < maxItemNumber; i++) {
 			for (int j=i+1; j <= maxItemNumber; j++) {
