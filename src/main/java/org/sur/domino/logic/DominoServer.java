@@ -70,6 +70,7 @@ public class DominoServer implements DominoService {
 			dominoResponse = new DominoResponse();
 			
 			// Load domino items to domino map, without considering the initial domino item
+			// Initially all domino items all marked as not visited by construction
 			dominoItemList.forEach(item -> {
 				if (!item.equals(initialDominoItem)) {
 					dominoMap.get(item.getFirst()).add(item);
