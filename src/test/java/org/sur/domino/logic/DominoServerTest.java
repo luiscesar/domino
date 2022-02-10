@@ -10,7 +10,7 @@ import java.util.ListIterator;
 import org.junit.jupiter.api.Test;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import org.sur.domino.logc.DominoServer;
+import org.sur.domino.logic.DominoServer;
 import org.sur.domino.model.DominoItem;
 import org.sur.domino.model.DominoResponse;
 import org.sur.domino.model.exception.DominoException;

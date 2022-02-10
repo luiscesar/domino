@@ -1,4 +1,4 @@
-package org.sur.domino.logc;
+package org.sur.domino.logic;
 
 import java.util.HashMap;
 import java.util.HashSet;
