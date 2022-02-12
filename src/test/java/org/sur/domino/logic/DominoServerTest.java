@@ -5,7 +5,6 @@ import static org.junit.jupiter.api.Assertions.fail;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.ListIterator;
 
 import org.junit.jupiter.api.Test;
 import org.slf4j.Logger;
