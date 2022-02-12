@@ -81,10 +81,22 @@ public class DominoRestControllerTest {
 	@Test
 	public void test001Case2() {
 		logger.info("test001Case2: Begin");
+		DominoRequest dominoRequest;
+		DominoResponse computedDominoResponse;
 		try {
-			assertTrue(dominoRestController != null);
+			dominoRequest = getDominoRequestCase1();
+			assertTrue(dominoService != null);
+			Mockito.when(dominoService.getHighestValueDominoChain(
+					Mockito.any(),
+					Mockito.any())).thenThrow(new DominoException("Test exception"));
+			computedDominoResponse = this.dominoRestController.
+					getDominoHighestValue(dominoRequest);
+			logger.error("computedDominoResponse = " + computedDominoResponse);
+			fail("DominoException expected");
 		} catch (RuntimeException e) {
 			fail(e.getMessage());
+		} catch (DominoException e) {
+			logger.error(e.getMessage());;
 		}
 	}
 	

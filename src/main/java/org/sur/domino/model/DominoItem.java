@@ -1,10 +1,23 @@
 package org.sur.domino.model;
 
+
+import javax.validation.Valid;
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Min;
+import javax.validation.constraints.Max;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
+@Valid
 public class DominoItem {
 
+	@NotNull
+	@Min(1)
+	@Max(10)
 	private Integer first;
+	
+	@NotNull
+	@Min(1)
+	@Max(10)
 	private Integer second;
 	
 	@JsonIgnore

@@ -2,10 +2,21 @@ package org.sur.domino.model;
 
 import java.util.List;
 
+import javax.validation.Valid;
+import javax.validation.constraints.NotNull;
+
+
+@Valid
 public class DominoRequest {
 
+	@NotNull
+	@Valid
 	private DominoItem initialDominoItem;
+	
+	@NotNull
+	@Valid
 	private List<DominoItem> dominoItems;
+	
 	public DominoItem getInitialDominoItem() {
 		return initialDominoItem;
 	}

@@ -14,6 +14,7 @@ import org.springframework.stereotype.Component;
 import org.sur.domino.model.DominoItem;
 import org.sur.domino.model.DominoResponse;
 import org.sur.domino.model.ValidDominoChain;
+import org.sur.domino.model.exception.DominoErrorMessages;
 import org.sur.domino.model.exception.DominoException;
 import org.sur.domino.service.types.DominoService;
 
@@ -66,6 +67,9 @@ public class DominoServer implements DominoService {
 		ValidDominoChain currentValidChain;
 		
 		try {
+			if (initialDominoItem.getFirst().equals(initialDominoItem.getSecond())) {
+				throw new DominoException(DominoErrorMessages.dominoItemFirstAndSecondEqualValue);
+			}
 			// Init response
 			dominoResponse = new DominoResponse();
 			
