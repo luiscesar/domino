@@ -4,13 +4,11 @@ import java.io.IOException;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import org.springframework.core.MethodParameter;
-import org.springframework.validation.BindingResult;
-import org.springframework.web.bind.MethodArgumentNotValidException;
 import org.sur.domino.model.exception.InvalidValueException;
 
 import com.fasterxml.jackson.core.JacksonException;
 import com.fasterxml.jackson.core.JsonParser;
+import com.fasterxml.jackson.core.JsonToken;
 import com.fasterxml.jackson.databind.DeserializationContext;
 import com.fasterxml.jackson.databind.JsonDeserializer;
 import com.fasterxml.jackson.databind.JsonNode;
@@ -28,6 +26,7 @@ public class DominoItemDeserializer extends JsonDeserializer<DominoItem> {
 		Integer first, second;
 		try {
 			JsonNode node = p.getCodec().readTree(p);
+			JsonToken token = p.currentToken();
 			try {
 				firstString = node.get("first").asText();		
 				first = Integer.parseInt(firstString);
@@ -40,7 +39,7 @@ public class DominoItemDeserializer extends JsonDeserializer<DominoItem> {
 				secondString = node.get("second").asText();
 				second = Integer.parseInt(secondString);
 			} catch (NumberFormatException e2) {
-				String errorMessage = "first: " + e2.getMessage();
+				String errorMessage = "second: " + e2.getMessage();
 				logger.error(errorMessage);
 				throw new InvalidValueException(errorMessage);
 			}		
