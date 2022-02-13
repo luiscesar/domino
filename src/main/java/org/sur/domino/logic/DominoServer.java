@@ -14,14 +14,13 @@ import org.springframework.stereotype.Component;
 import org.sur.domino.model.DominoItem;
 import org.sur.domino.model.DominoResponse;
 import org.sur.domino.model.ValidDominoChain;
-import org.sur.domino.model.exception.DominoErrorMessages;
 import org.sur.domino.model.exception.DominoException;
 import org.sur.domino.service.types.DominoService;
 
 @Component
 public class DominoServer implements DominoService {
 	
-	private static final Logger log = LoggerFactory.getLogger(DominoServer.class);
+	private static final Logger logger = LoggerFactory.getLogger(DominoServer.class);
 
 	// Valid domino chain with highest value
 	private static ValidDominoChain maxValueChain = new ValidDominoChain();
@@ -67,9 +66,6 @@ public class DominoServer implements DominoService {
 		ValidDominoChain currentValidChain;
 		
 		try {
-			if (initialDominoItem.getFirst().equals(initialDominoItem.getSecond())) {
-				throw new DominoException(DominoErrorMessages.dominoItemFirstAndSecondEqualValue);
-			}
 			// Init response
 			dominoResponse = new DominoResponse();
 			
@@ -101,7 +97,7 @@ public class DominoServer implements DominoService {
 			// Set domino response
 			dominoResponse.setDominoChain(maxValueChain);
 		} catch (RuntimeException e) {
-			log.error(e.getMessage());
+			logger.error(e.getMessage());
 			throw new DominoException(e.getMessage());
 		}
 		return dominoResponse;
@@ -134,7 +130,7 @@ public class DominoServer implements DominoService {
 				}
 			}			
 		} catch (RuntimeException e) {
-			log.error(e.getMessage());
+			logger.error(e.getMessage());
 			throw e;
 		}
 	}
@@ -184,7 +180,7 @@ public class DominoServer implements DominoService {
 				}
 			}
 		} catch (RuntimeException e) {
-			log.error(e.getMessage());
+			logger.error(e.getMessage());
 			throw e;
 		}
 		return endChain[0];
@@ -235,7 +231,7 @@ public class DominoServer implements DominoService {
 				}
 			}
 		} catch (RuntimeException e) {
-			log.error(e.getMessage());
+			logger.error(e.getMessage());
 			e.printStackTrace();
 			throw e;
 		}

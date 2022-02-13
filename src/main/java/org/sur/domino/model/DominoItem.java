@@ -3,10 +3,16 @@ package org.sur.domino.model;
 
 import javax.validation.Valid;
 import javax.validation.constraints.NotNull;
+import org.sur.domino.logic.validation.DominoItemConstraint;
+
 import javax.validation.constraints.Min;
+import javax.validation.constraints.Digits;
 import javax.validation.constraints.Max;
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 
+@JsonDeserialize(using = DominoItemDeserializer.class)
+@DominoItemConstraint
 @Valid
 public class DominoItem {
 

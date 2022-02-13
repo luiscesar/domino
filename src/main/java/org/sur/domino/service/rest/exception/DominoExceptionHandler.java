@@ -1,4 +1,4 @@
-package org.sur.domino.service.rest;
+package org.sur.domino.service.rest.exception;
 
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -11,7 +11,10 @@ public class DominoExceptionHandler {
 
 	@ExceptionHandler(value = DominoException.class)
 	ResponseEntity<Object> exception(DominoException exception) {
-		return new ResponseEntity<>(exception.getMessage(), HttpStatus.PRECONDITION_FAILED);	
+		return new ResponseEntity<>(
+				exception.getMessage(), 
+				HttpStatus.INTERNAL_SERVER_ERROR);	
 	}
+	
 }
 
