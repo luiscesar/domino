@@ -22,3 +22,69 @@ value 5 cannot be used to extend this chain;
 
 - The value of a chain is computed by summing the common values between
 connected items. I.e.: (7, 1) - (1, 5) - (5, 3) - (3, 2) has a value of 1 + 5 + 3 = 9;
+
+## Development
+- Domino has been developed as a microservice: service, logic, model
+- Domino microservice has a Restful API implementation
+- Domino microservice may be deployed as a SpringBoot application
+- Unit tests and integration tests realized
+
+## Compilation
+mvn clean package
+
+## Execution
+- Server side: 
+   
+   java -jar target\domino-1.0.0.jar
+
+- Client side: 
+
+   Request
+   
+    curl -X POST http://localhost:8080/api/dominoHighestValue
+     -H "Content-Type: application/json" 
+     -d "{
+    "initialDominoItem": {"first": 7, "second": 1},
+    "dominoItems":  [
+        {"first":7, "second":1},
+        {"first":1, "second":5},
+        {"first":5, "second":3},
+        {"first":3, "second":2}
+    ]
+}"
+
+  Response
+
+{
+    "dominoChain": {
+        "chain": [
+            {
+                "first": 1,
+                "second": 7
+            },
+            {
+                "first": 7,
+                "second": 1
+            },
+            {
+                "first": 1,
+                "second": 5
+            },
+            {
+                "first": 5,
+                "second": 3
+            },
+            {
+                "first": 3,
+                "second": 7
+            },
+            {
+                "first": 7,
+                "second": 8
+            }
+        ],
+        "leftMost": 1,
+        "rightMost": 8,
+        "value": 23
+    }
+}
