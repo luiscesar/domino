@@ -7,6 +7,7 @@ import java.util.List;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.sur.domino.model.exception.DominoErrorMessages;
 import org.sur.domino.model.exception.InvalidValueException;
 
 import com.fasterxml.jackson.core.JacksonException;
@@ -54,7 +55,7 @@ public class DominoRequestDeserializer extends JsonDeserializer<DominoRequest> {
 			logger.error(e.getMessage());
 			e.printStackTrace();
 			InvalidValueException exception = 
-					new InvalidValueException("DominoItem values must be integers");
+					new InvalidValueException(DominoErrorMessages.DOMINO_ITEM_VALUES_MUST_BE_INTEGERS);
 			throw exception;
 		}
 			
