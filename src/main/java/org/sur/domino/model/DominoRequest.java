@@ -4,8 +4,9 @@ import java.util.List;
 
 import javax.validation.Valid;
 import javax.validation.constraints.NotNull;
+import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 
-
+@JsonDeserialize(using = DominoRequestDeserializer.class)
 @Valid
 public class DominoRequest {
 
@@ -29,7 +30,20 @@ public class DominoRequest {
 	public void setDominoItems(List<DominoItem> dominoItems) {
 		this.dominoItems = dominoItems;
 	}
-	@Override
+	
+	
+	public DominoRequest() {
+		super();
+		// TODO Auto-generated constructor stub
+	}
+	
+	
+	public DominoRequest(@NotNull @Valid DominoItem initialDominoItem, @NotNull @Valid List<DominoItem> dominoItems) {
+		super();
+		this.initialDominoItem = initialDominoItem;
+		this.dominoItems = dominoItems;
+	}
+	
 	public int hashCode() {
 		final int prime = 31;
 		int result = 1;
