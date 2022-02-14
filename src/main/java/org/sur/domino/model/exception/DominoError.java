@@ -1,6 +1,6 @@
 package org.sur.domino.model.exception;
 
-public class DominoErrorEntity {
+public class DominoError {
 
 	private String error;
 
@@ -28,7 +28,7 @@ public class DominoErrorEntity {
 			return false;
 		if (getClass() != obj.getClass())
 			return false;
-		DominoErrorEntity other = (DominoErrorEntity) obj;
+		DominoError other = (DominoError) obj;
 		if (error == null) {
 			if (other.error != null)
 				return false;
@@ -42,12 +42,12 @@ public class DominoErrorEntity {
 		return "DominoErrorEntity [error=" + error + "]";
 	}
 
-	public DominoErrorEntity(String error) {
+	public DominoError(String error) {
 		super();
 		this.error = error;
 	}
 
-	public DominoErrorEntity() {
+	public DominoError() {
 		super();
 		// TODO Auto-generated constructor stub
 	}

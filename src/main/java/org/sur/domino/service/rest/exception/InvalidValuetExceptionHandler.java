@@ -7,21 +7,20 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.ControllerAdvice;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.sur.domino.model.exception.DominoError;
-import org.sur.domino.model.exception.DominoException;
+import org.sur.domino.model.exception.InvalidValueException;
 
 @ControllerAdvice
-public class DominoExceptionHandler {
-	private static Logger logger = LoggerFactory.getLogger(InvalidValuetExceptionHandler.class);
+public class InvalidValuetExceptionHandler {
 
-	@ExceptionHandler(value = DominoException.class)
-	ResponseEntity<DominoError> exception(DominoException exception) {
+	private static Logger logger = LoggerFactory.getLogger(InvalidValuetExceptionHandler.class);
+	
+	@ExceptionHandler(value = InvalidValueException.class)
+	ResponseEntity<DominoError> exception(InvalidValueException exception) {
 		logger.info("exception");
 		DominoError dominoErrorEntity = 
 				new DominoError(exception.getMessage());
 		return new ResponseEntity<DominoError>(
 				dominoErrorEntity, 
-				HttpStatus.INTERNAL_SERVER_ERROR);		
+				HttpStatus.BAD_REQUEST);	
 	}
-	
 }
-

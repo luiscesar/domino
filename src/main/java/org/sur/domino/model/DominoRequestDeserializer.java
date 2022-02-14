@@ -7,6 +7,7 @@ import java.util.List;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.sur.domino.model.exception.InvalidValueException;
 
 import com.fasterxml.jackson.core.JacksonException;
 import com.fasterxml.jackson.core.JsonParser;
@@ -15,6 +16,7 @@ import com.fasterxml.jackson.databind.DeserializationFeature;
 import com.fasterxml.jackson.databind.JsonDeserializer;
 import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
+import com.fasterxml.jackson.databind.exc.InvalidFormatException;
 
 public class DominoRequestDeserializer extends JsonDeserializer<DominoRequest> {
 
@@ -48,9 +50,12 @@ public class DominoRequestDeserializer extends JsonDeserializer<DominoRequest> {
 			logger.error("e: "+ e.getMessage());
 			e.printStackTrace();
 			throw e;
-		} catch (Exception e) {
+		} catch (InvalidFormatException e) {
+			logger.error(e.getMessage());
 			e.printStackTrace();
-			throw e;
+			InvalidValueException exception = 
+					new InvalidValueException("DominoItem values must be integers");
+			throw exception;
 		}
 			
 		return dominoRequest;
