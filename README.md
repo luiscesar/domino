@@ -1,5 +1,4 @@
 # Domino
-# Begin
 
 ## Description
 Given in input a list of domino items, calculates the chain with the highest value that can be built starting from one of the items. The starting item is given in
