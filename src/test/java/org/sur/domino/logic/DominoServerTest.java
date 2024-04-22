@@ -14,10 +14,16 @@ import org.sur.domino.model.DominoResponse;
 import org.sur.domino.model.exception.DominoException;
 
 
+/**
+ * The type Domino server test.
+ */
 public class DominoServerTest {
 	
 	private static final Logger logger = LoggerFactory.getLogger(DominoServerTest.class);
-		
+
+	/**
+	 * Test 001 case 1.
+	 */
 	@Test
 	public void test001Case1() {
 		logger.info("testCase1: Begin");
@@ -41,6 +47,9 @@ public class DominoServerTest {
 		}
 	}
 
+	/**
+	 * Test case 2.
+	 */
 	@Test
 	public void testCase2() {
 		logger.info("testCase2: Begin");
