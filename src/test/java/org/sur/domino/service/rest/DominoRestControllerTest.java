@@ -23,6 +23,9 @@ import org.sur.domino.model.DominoResponse;
 import org.sur.domino.model.exception.DominoException;
 import org.sur.domino.service.types.DominoService;
 
+/**
+ * The type Domino rest controller test.
+ */
 @ExtendWith(MockitoExtension.class)
 public class DominoRestControllerTest {
 
@@ -33,22 +36,34 @@ public class DominoRestControllerTest {
 	
 	@Mock
 	private DominoService dominoService;
-	
+
+	/**
+	 * Init context.
+	 */
 	@BeforeAll
 	static public void initContext() {
 		logger.info("initContext: Begin");
 	}
-	
+
+	/**
+	 * Before test.
+	 */
 	@BeforeEach
 	public void beforeTest() {
 		logger.info("beforeTest: Begin");
 	}
-	
+
+	/**
+	 * After test.
+	 */
 	@AfterEach
 	public void afterTest() {
 		logger.info("afterTest: Begin");
 	}
-	
+
+	/**
+	 * Test 001 case 1.
+	 */
 	@Test
 	public void test001Case1() {
 		logger.info("test001Case1: Begin");
@@ -78,6 +93,9 @@ public class DominoRestControllerTest {
 		}
 	}
 
+	/**
+	 * Test 001 case 2.
+	 */
 	@Test
 	public void test001Case2() {
 		logger.info("test001Case2: Begin");
