@@ -19,6 +19,9 @@ import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
+/**
+ * The type Domino rest controller integration test.
+ */
 @SpringBootTest
 @ContextConfiguration(classes = {DominoApplication.class })
 public class DominoRestControllerIntegrationTest {
@@ -26,17 +29,23 @@ public class DominoRestControllerIntegrationTest {
 	private static Logger logger = 
 			LoggerFactory.getLogger(DominoRestControllerIntegrationTest.class);
 
-	// Application Context
+	// Configurable Application Context
 	private static ConfigurableApplicationContext ctx = null;
 
 	@Autowired
 	private DominoService dominoService;
-	
+
+	/**
+	 * Init context.
+	 */
 	@BeforeAll
 	public static void initContext() {
 		ctx = new AnnotationConfigApplicationContext(DominoApplication.class);
 	}
-	
+
+	/**
+	 * Test 001 case 1.
+	 */
 	@Test
 	public void test001Case1() {
 		logger.info("test001Case1: Begin");
@@ -49,7 +58,10 @@ public class DominoRestControllerIntegrationTest {
 			fail(e.getMessage());
 		}
 	}
-	
+
+	/**
+	 * Test 001 case 2.
+	 */
 	@Test
 	public void test001Case2() {
 		logger.info("test001Case2: Begin");
